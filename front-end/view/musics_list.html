@@ -1,0 +1,40 @@
+<div ng-include="'view/navbar.html'"></div>
+<div class="jumbotron jumbotronMusic" ng-init="initScope()">
+	<h1 class="center marginTitle">{{musiCtrl.title}}</h1>
+	<form name="musicForm">
+	<div>
+		<table class="w3-table-all w3-responsive w3-centered w3-card-4" style="width: 100%">
+			<tr>
+				<th style="width: 4%"></th>
+				<th style="width: 30%">Música</th>
+				<th style="width: 25%">Artista</th>
+				<th style="width: 25%">Álbum</th>
+				<th style="width: 10%">Ano de lançamento</th>
+				<th style="width: 6%">Duração</th>
+			</tr>
+
+			<tr ng-repeat="music in musiCtrl.musics">
+				<td><input type="checkbox" ng-model="music.selected"/></td>
+				<td>{{music.name}}</td>
+				<td>{{music.album.artist.name}}</td>
+				<td>{{music.album.name}}</td>
+				<td>{{music.year}}</td>
+				<td>{{music.duration}}</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div class="center">
+		<button class="btn btn-primary spotBtnAdd" style="margin-top: 50px;" ng-click="musiCtrl.editPlaylist()" ng-disabled="musicForm.$pristine" >Salvar</button>
+	</div>
+	</form>
+	<!-- The Modal -->
+	<div id="myModal" class="modal">
+
+	    <!-- Modal content -->
+	    <div class="modal-content">
+	        <span class="close">&times;</span>
+	        <p id="modalText"></p>
+	</div>
+	
+</div>

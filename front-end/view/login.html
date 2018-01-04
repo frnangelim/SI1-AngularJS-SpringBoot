@@ -1,0 +1,30 @@
+<div class="body-login">
+	<div class="row">
+		<div class="col-md-8">
+			<img class="app-wp" src="imgs/wp2.jpg">
+		</div>
+		<div class="col-md-4 center" style="margin-top: 7%;">
+			<img class="app-logo" src="imgs/logo.jpeg">
+			<form name="loginForm" ng-submit="loginCtrl.login(user)">
+				<div>
+					<input type="email" ng-model="user.email" class="form-border login-form" placeholder="Email" required="true">
+				</div>
+				<div>
+					<input type="password" ng-model="user.password" class="form-border login-form" placeholder="Senha" required="true">
+				</div>
+				<button class="btn btn-primary spotBtnAdd" ng-disabled="loginForm.$invalid">Entrar</button>
+				<p class="signup-text" ui-sref="signup">Ainda não é cadastrado? Cadastre-se aqui.</p>
+			</form>
+		</div>
+	</div>
+	<!-- The Modal -->
+		<div id="myModal" class="modal">
+
+		    <!-- Modal content -->
+		    <div class="modal-content">
+		        <span class="close">&times;</span>
+		        <p id="modalText"></p>
+			</div>
+		
+		</div>
+</div>

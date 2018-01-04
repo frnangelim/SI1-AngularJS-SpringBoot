@@ -1,0 +1,45 @@
+<div ng-include="'view/navbar.html'"></div>
+<div class="jumbotron jumbotronCenter">
+
+<h1 class="center marginTitle">{{playlistCtrl.title}}</h1>
+
+		<div>
+			<table class="w3-table-all w3-card-4" style="width: 100%; margin-bottom: 50px;">
+				<tr>
+					<th></th>
+					<th>Nome</th>
+					<th>Qnt. músicas</th>
+				</tr>
+				<tr ng-repeat="playlist in playlistCtrl.playlists | orderBy: 'name' ">
+					<td><input type="checkbox" ng-model="playlist.selected"/></td>
+					<td style="cursor: pointer;" ng-click="playlistCtrl.goToPlaylist(playlist)" >{{playlist.name}}</td>
+					<td>{{playlist.musics.length}}</td>
+				</tr>
+			</table>
+		</div>
+
+		<form name="playlistForm" ng-submit="playlistCtrl.addPlaylist(playlist)">
+			<div class="centerFormName">
+			<input type="text" class="form-control form-border" ng-model="playlist.name" placeholder="Nome da playlist" ng-required="true" ng-maxlength="50"/>
+			</div>
+
+			<div class="center">
+				<button class="btn btn-primary spotBtnAdd" ng-disabled="playlistForm.$invalid">Adicionar Playlist</button>
+			</div>
+			<div class="center">
+				<button class="btn btn-danger spotBtnDel" ng-click="playlistCtrl.removePlaylists()" ng-disabled="!playlistCtrl.isPlaylistSelectedToRemove()" ng-hide="!playlistCtrl.isPlaylistSelectedToRemove()">Apagar Playlist(s)</button>
+			</div>
+		</form>
+
+<!-- The Modal -->
+		<div id="myModal" class="modal">
+
+		    <!-- Modal content -->
+		    <div class="modal-content">
+		        <span class="close">&times;</span>
+		        <p id="modalText"></p>
+			</div>
+		
+		</div>
+
+</div>

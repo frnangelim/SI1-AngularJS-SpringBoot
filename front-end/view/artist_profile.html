@@ -1,0 +1,59 @@
+<div ng-include="'view/navbar.html'"></div>
+<div class="jumbotron jumbotronCenter artist-profile">
+	<h1 class="center">{{profileCtrl.title}}</h1>
+	<form name="form">
+		<div>
+			<a><img src="{{profileCtrl.currentArtist.photo}}" class="center artist-profile-picture"></a>
+			<div>
+				<div class="row" style="margin-left: 2px;">
+					<h2 style="color: #1E90FF;">Nome:</h2> 
+
+					<h2 style="color: #1E90FF; margin-left: auto">Nota:</h2>
+					<div>
+						<select id="rating" class="form-control form-border" style="height: 5%; margin-top: 14px;" type="text" ng-model="info.rating" ng-required="true">
+							<option value="">{{profileCtrl.currentArtist.rating}}</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+						</select>
+					</div>
+				</div>
+				<h3>{{profileCtrl.currentArtist.name}}</h3>
+				<h2 style="color: #1E90FF;">Lista de álbuns: </h2>
+
+				<table>
+					<tr ng-repeat="album in profileCtrl.currentArtist.albums">
+						<td>- {{album.name}}</td>
+					</tr>
+				</table>
+				<h2 style="color: #1E90FF;">Última música ouvida: </h2>
+				<select id="lmPlayed" class="form-control form-border" type="text" ng-model="info.lastMusicPlayed" ng-options="music.name for music in profileCtrl.musics | orderBy: 'name' ">
+						<option value="">{{profileCtrl.currentArtist.lastMusicPlayed.name}}</option>
+				</select>
+
+			</div>
+		</div>
+	</form>
+	<button class="btn btn-primary" style="margin-top: 10px; width: 100%" ng-click="profileCtrl.saveInfo(info)" ng-disabled="form.$pristine">Salvar</button>
+
+	<button class="btn btn-danger spotBtnDel center" ng-click="profileCtrl.backHome()" style="width: 100%;">Fechar</button>
+
+<!-- The Modal -->
+	<div id="myModal" class="modal">
+
+	    <!-- Modal content -->
+	    <div class="modal-content">
+	        <span class="close">&times;</span>
+	        <p id="modalText"></p>
+		</div>
+
+	</div>
+
+</div>

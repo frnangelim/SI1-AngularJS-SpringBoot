@@ -1,0 +1,146 @@
+<div ng-include="'view/navbar.html'"></div>
+<div class="jumbotron" ng-init="homeCtrl.init()">
+
+	<div class="row">
+
+		<!-- Adicionar Album --> 
+		<div class="jumbotronAlbum">
+
+			<h1 class="center marginTitle">{{homeCtrl.titleAlbum}}</h1>
+
+			<div>
+				<table class="w3-table-all w3-responsive w3-centered w3-card-4" style="width: 100%; margin-bottom: 50px;">
+					<tr>
+						<th style="width: 4%"></th>
+						<th style="width: 30%">Nome</th>
+						<th style="width: 25%">Artista</th>
+					</tr>
+
+					<tr ng-repeat="album in homeCtrl.albums | orderBy: 'name'">
+						<td><input type="checkbox" ng-model="album.selected"/></td>
+						<td>{{album.name}}</td>
+						<td>{{album.artist.name}}</td>	
+					</tr>
+				</table>
+			</div>
+
+			<form name="albumForm" ng-submit="homeCtrl.addAlbum(album)">
+				<div class="centerFormName">
+					<input type="text" class="form-control form-border" ng-model="album.name" placeholder="Nome do álbum" ng-required="true" ng-maxlength="50"/>
+
+					<select class="form-control form-border center" type="text" ng-model="album.artist" ng-options="artist.name for artist in homeCtrl.artists | orderBy: 'name'" ng-required="true">
+						<option value="">Selecione um artista</option>
+				  	</select>
+
+				</div>
+			
+			<div class="center">
+				<button class="btn btn-primary spotBtnAdd" ng-disabled="albumForm.$invalid">Adicionar Álbum</button>
+			</div>
+
+			<div class="center">
+				<button class="btn btn-danger spotBtnDel" ng-click="homeCtrl.removeAlbums()" ng-disabled="!homeCtrl.isAlbumSelectedToRemove()" ng-hide="!homeCtrl.isAlbumSelectedToRemove()">Apagar Álbum(ns)</button>
+			</div>
+			</form>
+			
+		</div>
+		<!-- Adicionar Música --> 
+		<div class="jumbotronMusic">
+			<h1 class="center marginTitle">{{homeCtrl.titleMusic}}</h1>
+			
+			<form name="musicForm" ng-submit="homeCtrl.addMusic(music)">
+				<div class="centerFormName">
+					<input type="text" class="form-control form-border" ng-model="music.name" placeholder="Nome da música" ng-required="true" />
+					<select class="form-control form-border" type="text" ng-model="music.artist" ng-options="artist.name for artist in homeCtrl.artists | orderBy: 'name' ">
+						<option value="">Selecione um artista</option>
+					</select>
+
+					<select class="form-control form-border" type="text" ng-model="music.album" ng-options="album.name for album in homeCtrl.albums | orderBy: 'name'" ng-required="true">
+						<option value="">Selecione um álbum</option>
+				  	</select>
+
+					<input type="number" class="form-control form-border" ng-model="music.year" placeholder="Ano de lançamento" ng-required="true" ng-maxlength="4"/>
+					<input type="text" class="form-control form-border" ng-model="music.duration" placeholder="Duração da música" ng-required="true"/>
+				</div>
+
+			<div class="center">
+				<button class="btn btn-primary spotBtnAdd" ng-disabled="musicForm.$invalid">Adicionar Música</button>
+			</div>
+			</form>
+
+		</div>
+		
+	</div>
+	<form ng-submit="homeCtrl.onSearch(searchText)">
+		<div name="searchForm"class="centerSearch" style="margin-top: 50px;">
+			<div class="row">
+			  <input type="text" class="search-input" ng-model="searchText" placeholder="Pesquise um artista...">
+			  <img class="search-button" type="image" src="imgs/search.png">
+			</div>
+		</div>
+	</form>
+
+<!-- Adicionar Artista --> 
+<div class="jumbotronCenter">
+
+	<h1 class="center marginTitle">{{homeCtrl.titleArtist}}</h1>
+
+	<font ng-hide="!homeCtrl.hasSearch()" color="#1E90FF" ng-class="search-text" ng-hide="!homeCtrl.hasSearch()"> Resultado da busca por: </font>
+	<font>{{homeCtrl.searchText}}</font>
+	<font class="clean-search" color="#1E90FF" ng-click="homeCtrl.resetSearch()" ng-hide="!homeCtrl.hasSearch()">   Limpar</font>
+
+		<div>
+			<table class="w3-table-all w3-responsive w3-centered w3-card-4" style="width: 100%; margin-bottom: 50px;">
+				<tr>
+					<th style="width: 10%"></th>
+					<th style="width: 70%">Artista</th>
+					<th style="width: 20%">Foto</th>
+					<th>Favorito</th>
+				</tr>
+				<tr ng-repeat="artist in homeCtrl.artists | orderBy: 'name' | filter: homeCtrl.searchText">
+					<td><input type="checkbox" ng-model="artist.selected"/></td>
+					<td ui-sref="artist_profile" style="cursor: pointer;" ng-click="homeCtrl.goToProfile(artist)" >{{artist.name}}</td>
+					<td><a  href="{{artist.photo}}" target="blank"><img src="{{artist.photo}}" alt="Foto" style="width:35px px;height: 35px"></a></td>
+
+					<td ng-show="!homeCtrl.isArtistFavorite(artist)"> <input id="{{artist.name}}" type="image" src="imgs/star.png" ng-click="homeCtrl.setFavorite(artist)"/></td>
+
+					<td ng-show="homeCtrl.isArtistFavorite(artist)"><input id="{{artist.name}}" type="image" src="imgs/staractive.png" ng-click="homeCtrl.setFavorite(artist)"/> </td>
+				</tr>
+			</table>
+		</div>
+
+		<form name="artistForm" ng-submit="homeCtrl.addArtist(artist)">
+				<div class="centerFormName">
+				<input type="text" class="form-control form-border" ng-model="artist.name" placeholder="Nome do artista" ng-required="true" ng-maxlength="50"/>
+				</div>
+				<div class="center">
+					<input type="link" class="form-control form-border" ng-model="artist.photo" placeholder="Foto do artista" />
+				</div>
+			
+
+			<div class="center">
+				<button class="btn btn-primary spotBtnAdd" ng-disabled="artistForm.$invalid">Adicionar Artista</button>
+			</div>
+			<div class="center">
+				<button class="btn btn-danger spotBtnDel" ng-click="homeCtrl.removeArtists()" ng-disabled="!homeCtrl.isArtistSelectedToRemove()" ng-hide="!homeCtrl.isArtistSelectedToRemove()">Apagar Artista(s)</button>
+			</div>
+			
+		</form>
+
+
+		<!-- The Modal -->
+		<div id="myModal" class="modal">
+
+		    <!-- Modal content -->
+		    <div class="modal-content">
+		        <span class="close">&times;</span>
+		        <p id="modalText"></p>
+			</div>
+		
+		</div>
+</div>
+
+</div>
+
+
+

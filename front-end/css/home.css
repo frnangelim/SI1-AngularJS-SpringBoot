@@ -1,0 +1,243 @@
+p:hover {
+ text-decoration: underline;
+}
+.app-logo{
+    margin-bottom: 4%;
+    width: 150px; 
+    height: 150px;
+}
+
+.app-wp{
+    height: 100%; 
+    width: 100%;
+}
+
+.back-signup{
+    margin-right: auto;
+    margin-top: 5%;
+    cursor: pointer;
+}
+
+.app-navbar{
+    padding-top: 35px;
+}
+
+.search-text {
+    color: #c0f010;
+}
+
+.jumbotron{
+    margin-top: -1%;
+}
+
+.jumbotronCenter {
+	width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.jumbotronArtist{
+    width: 50%
+    margin-right: auto;
+}
+.jumbotronMusic {
+    width: 40%
+    margin-left: auto;
+}
+.jumbotronAlbum{
+    width: 55%;
+    margin-right: auto;
+}
+.table {
+	margin-top: 20px;
+}
+.form {
+	margin-top: 20px;
+	text-align: center;
+}
+.spotBtnAdd {
+	margin-top: 20px;
+	padding-left: 100px;
+	padding-right: 100px;
+}
+.spotBtnDel {
+	margin-top: 10px;
+	padding-left: 100px;
+	padding-right: 100px;
+}
+.centerFormName {
+	margin-top: 30px;
+	text-align: center;
+}
+.center {
+	text-align: center;
+}
+.form-control{
+    margin: 3px;
+}
+
+.w3-input{
+    color: black;
+    margin-left: 50%;
+}
+
+.artist-profile{
+    background-color: #D3D3D3;
+}
+
+.artist-profile-picture{
+    width: 125px;
+    height: 186px;
+    margin-right: 6px;
+}
+
+.login-form{
+    padding: 2px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 5px;
+    text-align: center;
+    border: 1.5px solid #1E90FF !important;
+}
+
+.signup-text{
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    text-align: center;
+}
+
+.selector-artist{
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+}
+
+.form-border{
+    border: 1.1px solid #1E90FF;
+    border-radius: 5px;
+}
+
+/* Modal Content */
+.modal-content {
+    background: rgba(0.8,0.8,0.7,1);
+    color: black;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    margin-top:50px;
+    font-weight: bold;
+}
+
+/* The Close Button */
+.close {
+    color: black;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.toolbar-button {
+    text-align: center;
+    height: 50px;
+    width: 100px;
+    margin: 0;
+}
+
+.margintopTable {
+    margin-top: 1px;
+}
+
+.marginTitle {
+    margin-bottom: 20px;
+}
+.marginTitlePlus{
+    margin-top: 70px;
+}
+.toolbarM {
+    background: #1E90FF;
+    color: white;
+}
+
+/*@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body{
+  background: #f2f2f2;
+  font-family: 'Open Sans', sans-serif;
+}*/
+
+.centerSearch{
+    margin-bottom: 25px;
+}
+
+.search-input{
+    height: 40px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: 5px;
+    border: 3px solid #1E90FF;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.search-button{
+    height: 40px;
+    width: 42px;
+    margin-right: auto;
+    border-radius: 5px;
+    border: 2px solid #1E90FF;
+
+}
+
+.clean-search{
+    float: right;
+    cursor: pointer;
+}
+
+
+/* Navbar */
+.navbar-brand { position: relative; z-index: 2; }
+
+.navbar-nav.navbar-right .btn { position: relative; z-index: 2; padding: 4px 20px; margin: 10px auto; }
+
+.navbar .navbar-collapse { position: relative; }
+.navbar .navbar-collapse .navbar-right > li:last-child { padding-left: 22px; }
+
+.navbar .nav-collapse { position: absolute; z-index: 1; top: 0; left: 0; right: 0; bottom: 0; margin: 0; padding-right: 120px; padding-left: 80px; width: 100%; }
+.navbar.navbar-default .nav-collapse { background-color: #f8f8f8; }
+.navbar.navbar-inverse .nav-collapse { background-color: #222; }
+.navbar .nav-collapse .navbar-form { border-width: 0; box-shadow: none; }
+.nav-collapse>li { float: right; }
+
+.btn.btn-circle { border-radius: 50px; }
+.btn.btn-outline { background-color: transparent; }
+
+@media screen and (max-width: 767px) {
+    .navbar .navbar-collapse .navbar-right > li:last-child { padding-left: 15px; padding-right: 15px; } 
+    
+    .navbar .nav-collapse { margin: 7.5px auto; padding: 0; }
+    .navbar .nav-collapse .navbar-form { margin: 0; }
+    .nav-collapse>li { float: none; }
+}
