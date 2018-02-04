@@ -1,3 +1,3 @@
 app.value("config",{
-    baseUrl: "https://localhost:8080"
+    baseUrl: "https://sistemasdeinformacao20172silab.herokuapp.com"
 });
